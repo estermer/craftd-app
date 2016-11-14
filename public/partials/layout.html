@@ -6,6 +6,10 @@
     <script src="/js/fbsdk.js" charset="utf-8"></script>
   </head>
   <body>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
 
+    <div id="status">
+    </div>
   </body>
 </html>

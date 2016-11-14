@@ -13,6 +13,13 @@ var pryjs = require('pryjs');
 var methodOverride = require('method-override');
 var hbs = require('hbs');
 
+///ENV variables///
+var dotenv = require('dotenv');
+dotenv.load();
+///************///
+
+console.log(process.env.CLIENT_ID);
+
 app.get('/', function(req, res){
   res.json({status: 200, message: "connected!"});
 });
