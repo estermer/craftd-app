@@ -1,3 +1,7 @@
+/*************************************************/
+//Created By Eric Stermer - General Assembly WDIR//
+/*************************************************/
+
 ///MODULES///
 var express = require('express');
 var app = express();
@@ -7,22 +11,44 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var passport = require('passport');
 var passportLocal = require('passport-local');
-var passportFacebook = require('passport-facebook');
 var pry = require('pry');
 var pryjs = require('pryjs');
 var methodOverride = require('method-override');
 var hbs = require('hbs');
+///********///
+
+///MONGOOSE///
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/milelogger';
+mongoose.connect(mongoURI);
+mongoose.Promise = global.Promise;
+///********///
+
+///EXPRESS CONFIG///
+app.use(methodOverride('_method'));
+app.use(express.static(__dirname + '/public'));
+app.use( bodyParser.json() );    // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
+  extended: true
+}));
+///***********///
 
 ///ENV variables///
-var dotenv = require('dotenv');
-dotenv.load();
+// var dotenv = require('dotenv');
+// dotenv.load();
 ///************///
 
-console.log(process.env.CLIENT_ID);
+///PASSPORT CONFIGURATION///
 
-app.get('/', function(req, res){
-  res.json({status: 200, message: "connected!"});
+///*****************///
+
+
+///SERVER API///
+app.get('/', function(req, res) {
+    res.json({ status: 200 });
 });
+
+
+///*********///
 
 app.listen(process.env.PORT || 3000, function(){
   console.log('=============================');
