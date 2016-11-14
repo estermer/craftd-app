@@ -12,7 +12,7 @@ User {
   beers: {BeersSchema}
 }
 
-Beers {
+Beer {
   name: String,
   img: String,
   comment: String,
