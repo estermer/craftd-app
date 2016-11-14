@@ -14,7 +14,9 @@ User {
 
 Beers {
   name: String,
-  img: String
+  img: String,
+  comment: String,
+  rating: Integer
 }
 ```
 
