@@ -1,0 +1,45 @@
+{
+  "name": "craftd-app",
+  "version": "1.0.0",
+  "description": "A craft beer tracker app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estermer/craftd-app.git"
+  },
+  "keywords": [
+    "craft",
+    "beer",
+    "beer",
+    "brew",
+    "brewhub"
+  ],
+  "author": "Eric Stermer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estermer/craftd-app/issues"
+  },
+  "homepage": "https://github.com/estermer/craftd-app#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "hbs": "^4.0.1",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.7",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "pry": "^0.6.5",
+    "pryjs": "^1.0.3"
+  },
+  "engines": {
+    "node": "6.3.0"
+  }
+}
