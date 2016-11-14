@@ -7,8 +7,13 @@ This app allows a user to keep track of the beers they taste and drink.
 ### Models
 ```
 User {
-  fb-username: String,
+  username: String,
   password: String,
-  
+  beers: {BeersSchema}
+}
+
+Beers {
+  name: String,
+  img: String
 }
 ```
