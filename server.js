@@ -60,13 +60,20 @@ app.get('/', function(req, res) {
 });
 
 ///REGISTER///
-
+app.post('/register', function(req, res){
+  //User.create
+});
 
 ///LOGIN///
-
+app.get('/login', passport.authenticate('local'), function(req, res){
+  res.json({user: req.user});
+});
 
 ///LOGOUT///
-
+app.delete('/logout', function(req, res){
+  res.lgout();
+  res.json({message: "Logged Out!"});
+});
 
 ///*********///
 
