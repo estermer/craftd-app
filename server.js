@@ -14,7 +14,6 @@ var passportLocal = require('passport-local');
 var pry = require('pry');
 var pryjs = require('pryjs');
 var methodOverride = require('method-override');
-var hbs = require('hbs');
 ///********///
 
 ///MONGOOSE///
@@ -38,7 +37,20 @@ app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
 ///************///
 
 ///PASSPORT CONFIGURATION///
+var LocalStrategy = require('passport-local').Strategy;
 
+//Middleware
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 ///*****************///
 
 
@@ -46,6 +58,14 @@ app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
 app.get('/', function(req, res) {
     res.json({ status: 200 });
 });
+
+///REGISTER///
+
+
+///LOGIN///
+
+
+///LOGOUT///
 
 
 ///*********///
