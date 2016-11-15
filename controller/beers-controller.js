@@ -32,14 +32,44 @@ router.post('/', function(req, res){
 
 //UPDATE
 //=========================================
-router.put('/:id', function(req, res){
-  
+router.put('/:id', function(req, res){]
+  User.findOne({
+    username: req.user.username
+  }, function(err, user){
+    for(var i = 0; i < req.user.beers.length; i++){
+      if(user.beers[i]["id"] == req.params.id){
+        user.beers[i] = req.body.beer;
+      }
+    }
+
+    user.save(function(err){
+      if(err) console.log(err);
+      console.log("Edited Item Saved to User!!!");
+    });
+
+    res.json({status: 200, user: req.user});
+  });
 });
 
 //DESTROY
 //=========================================
 router.delete('/:id', function(req, res){
+  User.findOne({
+    username: req.user.username
+  }, function(err, user){
+    for(var i = 0; i < req.user.beers.length; i++){
+      if(user.beers[i]["id"] == req.params.id){
+        user.beers.splice(i, 1);
+      }
+    }
 
+    user.save(function(err){
+      if(err) console.log(err);
+      console.log("Edited Item Saved to User!!!");
+    });
+
+    res.json({status: 200, user: req.user});
+  });
 });
 
 module.exports = router;
