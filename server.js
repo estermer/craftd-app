@@ -16,6 +16,11 @@ var pryjs = require('pryjs');
 var methodOverride = require('method-override');
 ///********///
 
+///EXTERNAL FILES///
+var UsersController = require('./controller/users-controller.js');
+var BeersController = require('./controller/beers-controller.js');
+///**************///
+
 ///MONGOOSE///
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/milelogger';
 mongoose.connect(mongoURI);
@@ -39,7 +44,6 @@ app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
 ///PASSPORT CONFIGURATION///
 var LocalStrategy = require('passport-local').Strategy;
 
-//Middleware
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: false,
@@ -53,45 +57,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 ///*****************///
 
+///MIDDLEWARE ROUTING///
+app.use("/users", UsersController);
+app.use("/beers", BeersController);
+///*****************///
 
 ///SERVER API///
 app.get('/', function(req, res) {
     res.json({ status: 200 });
 });
 
-///REGISTER///
-app.post('/register', function(req, res){
-  console.log("USER REGISTRATION INFORMATION >>>>>", req.body.username);
-  User.register(new User({
-    username: req.body.username
-  }),
-  req.body.password,
-  function(err, user){
-    console.log("AFTER REGISTRATION USER >>>>>>>>", user);
-    req.login(user, function(err){
-      if (err) {console.log(err); }
-      return res.json(user);
-    });
-  });
-});
-
-///LOGIN///
-app.get('/login', passport.authenticate('local'), function(req, res){
-  console.log("USER LOGGED IN >>>>>>>>>", req.user.username);
-  res.json({user: req.user});
-});
-
-///LOGOUT///
-app.delete('/logout', function(req, res){
-  res.logout();
-  console.log("USER LOGGED OUT >>>>>>>>>>");
-  res.json({message: "Logged Out!"});
-});
-
-///*********///
-
 app.listen(process.env.PORT || 3000, function(){
   console.log('=============================');
   console.log('SERVER CONNECTED TO PORT 3000');
   console.log('=============================');
 });
+///*********///
