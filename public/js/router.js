@@ -1,5 +1,5 @@
 (function(){
-  app.module('craftd')
+  angular.module('craftd')
     .config(MainRouter);
 
   MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];

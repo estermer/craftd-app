@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('craftd', []);
+  var app = angular.module('craftd', ['ui.router']);
 
   app.factory('Values', function(){
     return {
