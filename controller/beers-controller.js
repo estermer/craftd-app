@@ -32,13 +32,13 @@ router.post('/', function(req, res){
 
 //UPDATE
 //=========================================
-router.put('/:name', function(req, res){
-
+router.put('/:id', function(req, res){
+  
 });
 
 //DESTROY
 //=========================================
-router.delete('/:name', function(req, res){
+router.delete('/:id', function(req, res){
 
 });
 
