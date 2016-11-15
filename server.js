@@ -16,16 +16,19 @@ var pryjs = require('pryjs');
 var methodOverride = require('method-override');
 ///********///
 
+
 ///EXTERNAL FILES///
 var UsersController = require('./controller/users-controller.js');
 var BeersController = require('./controller/beers-controller.js');
 ///**************///
+
 
 ///MONGOOSE///
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/milelogger';
 mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 ///********///
+
 
 ///EXPRESS CONFIG///
 app.use(methodOverride('_method'));
@@ -36,10 +39,12 @@ app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
 }));
 ///***********///
 
+
 ///ENV variables///
 // var dotenv = require('dotenv');
 // dotenv.load();
 ///************///
+
 
 ///PASSPORT CONFIGURATION///
 var LocalStrategy = require('passport-local').Strategy;
@@ -57,10 +62,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 ///*****************///
 
+
 ///MIDDLEWARE ROUTING///
 app.use("/users", UsersController);
 app.use("/beers", BeersController);
 ///*****************///
+
 
 ///SERVER API///
 app.get('/', function(req, res) {

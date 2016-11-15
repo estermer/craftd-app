@@ -8,7 +8,9 @@ var router = express.Router();
 var User = require('../model/user.js');
 var Beer = require('../model/beer.js');
 
-///REGISTER///
+
+//REGISTER
+//=========================================
 router.post('/register', function(req, res){
   console.log("USER REGISTRATION INFORMATION >>>>>", req.body.username);
   User.register(new User({
@@ -24,13 +26,15 @@ router.post('/register', function(req, res){
   });
 });
 
-///LOGIN///
+//LOGIN
+//=========================================
 router.get('/login', passport.authenticate('local'), function(req, res){
   console.log("USER LOGGED IN >>>>>>>>>", req.user.username);
   res.json({user: req.user});
 });
 
-///LOGOUT///
+//LOGOUT
+//=========================================
 router.delete('/logout', function(req, res){
   res.logout();
   console.log("USER LOGGED OUT >>>>>>>>>>");
