@@ -7,13 +7,19 @@ var router = express.Router();
 //EXTERNAL FILES
 //=========================================
 var Beer = require('../model/beer.js').model;
+var dotenv = require('dotenv');
+dotenv.load();
 
 
-//INDEX SEARCH BreweryDB API
-//=========================================
-// router.get('/', function(req, res){
-//
-// });
+// ENV response to send api key and id to front end
+// =========================================
+router.get('/env', function(req, res){
+  res.json({env: {
+              clientId: process.env.CLIENT_ID,
+              clientSecret: process.env.CLIENT_SECRET
+            }
+          });
+});
 
 //CREATE
 //=========================================
