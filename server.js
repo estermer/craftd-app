@@ -61,17 +61,30 @@ app.get('/', function(req, res) {
 
 ///REGISTER///
 app.post('/register', function(req, res){
-  //User.create
+  console.log("USER REGISTRATION INFORMATION >>>>>", req.body.username);
+  User.register(new User({
+    username: req.body.username
+  }),
+  req.body.password,
+  function(err, user){
+    console.log("AFTER REGISTRATION USER >>>>>>>>", user);
+    req.login(user, function(err){
+      if (err) {console.log(err); }
+      return res.json(user);
+    });
+  });
 });
 
 ///LOGIN///
 app.get('/login', passport.authenticate('local'), function(req, res){
+  console.log("USER LOGGED IN >>>>>>>>>", req.user.username);
   res.json({user: req.user});
 });
 
 ///LOGOUT///
 app.delete('/logout', function(req, res){
-  res.lgout();
+  res.logout();
+  console.log("USER LOGGED OUT >>>>>>>>>>");
   res.json({message: "Logged Out!"});
 });
 
