@@ -14,7 +14,11 @@ dotenv.load();
 // ENV response to send api key and id to front end
 // =========================================
 router.get('/env', function(req, res){
-  res.json({key: process.env.API_KEY});
+  res.json({env: {
+              clientId: process.env.CLIENT_ID,
+              clientSecret: process.env.CLIENT_SECRET
+            }
+          });
 });
 
 //CREATE
