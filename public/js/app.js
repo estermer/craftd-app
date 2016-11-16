@@ -3,16 +3,33 @@
 
   app.factory('Values', function(){
     var data = {
-      /* key values of variables
-      I want to share between controllers*/
+      isLoggedIn: false,
+      currentUser: {}
     };
 
     return {
-      /*getter and setter functions for the data*/
-    }
+      setCurrentUser: function(user){
+        data.currentUser = user;
+      },
+      getCurrentUser: function(){
+        return data.currentUser;
+      },
+      setUserStatus: function(status){
+        data.isLoggedIn = status;
+      },
+      getUserStatus: function(){
+        return data.isLoggedIn;
+      }
+    };
   });
 
-  app.controller('MainCtrl' function($scope, $http, Values){
+  //This controller will controll the dynamic view of the navigation bar
+  app.controller('MenuCtrl' function($scope, $http, Values){
+    // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
+  });
+
+  //controls login, registration
+  app.controller('UserCtrl' function($scope, $http, Values){
 
   });
 
