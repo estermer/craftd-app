@@ -57,7 +57,7 @@ router.get('/login', passport.authenticate('local'), function(req, res){
 //LOGOUT
 //=========================================
 router.delete('/logout', function(req, res){
-  res.logout();
+  req.logout();
   console.log("USER LOGGED OUT >>>>>>>>>>");
   res.json({message: "Logged Out!"});
 });
