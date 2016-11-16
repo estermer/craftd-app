@@ -21,7 +21,7 @@
       url: '/login',
       templateUrl: "/partials/login.html",
     })
-    .state('search', {
+    .state('search-beers', {
       url: '/search-beers',
       templateUrl: "/partials/search-beers.html",
     })
