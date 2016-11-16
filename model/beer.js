@@ -10,7 +10,7 @@ var BeerSchema = new Schema({
 });
 
 BeerSchema.plugin(passportLocalMongoose);
-BeerModel = mongoose.model('Beer', BeerSchema);
+var BeerModel = mongoose.model('Beer', BeerSchema);
 
 module.exports = {
   schema: BeerSchema,
