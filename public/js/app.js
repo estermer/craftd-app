@@ -17,6 +17,11 @@
   });
 
   app.controller('BeerCtrl', function($scope, $http, Values){
+    var untappdURL = 'https://api.untappd.com/v4/search';
 
+    $http.get(`${untappdURL}/beer?q=${beer}&client_id=${clientId}&client_secret=${clientSecret}`, function(req, res){
+        /*set variable of beers
+            response.response.beers*/
+    });
   });
 })();
