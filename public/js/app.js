@@ -3,7 +3,6 @@
 
   app.factory('Values', function(){
     var data = {
-      isLoggedIn: false,
       currentUser: {}
     };
 
@@ -13,44 +12,40 @@
       },
       getCurrentUser: function(){
         return data.currentUser;
-      },
-      setUserStatus: function(status){
-        data.isLoggedIn = status;
-      },
-      getUserStatus: function(){
-        return data.isLoggedIn;
       }
     };
   });
 
-  //This controller will controll the dynamic view of the navigation bar
-  app.controller('MenuCtrl', function($scope, $http, $state, $stateParams, Values){
+  //controls login, registration
+  app.controller('UserCtrl', function($scope, $http, $state, $stateParams, Values){
     var rootURL = 'http://localhost:3000';
     // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
-    $scope.isLoggedIn = Values.getUserStatus();
+    $scope.isLoggedIn = false;
+    console.log($scope.isLoggedIn);
 
     //functions for redirecting Users to their different views
-    $scope.registerGo = function(){
-      $state.go('register', {url: '/register'});
+
+    $scope.userLogin = function(user){
+      $http.get(`${rootURL}/users/login`, user)
+        .then(function(response){
+          $scope.isLoggedIn = true;
+          Values.setCurrentUser(response.data.user)
+          $state.go('user-home', {url: '/user-home'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
     };
 
-    $scope.loginGo = function(){
-      $state.go('login', {url: '/login'});
-    };
+    $scope.registerUser = function(user){
 
-    $scope.userHomeGo = function(){
-      $state.go('user-home', {url: '/user-home'});
-    };
-
-    $scope.searchGo = function(){
-      $state.go('search', {url: '/search-beers'});
     };
 
     $scope.logoutUser = function(){
       $http.delete(`${rootURL}/users/logout`)
         .then(function(response){
           console.log("<<<<<<<<<<<", response.data.message);
-          Values.setUserStatus(false);
+          $scope.isLoggedIn = false;
           Values.setCurrentUser({});
           $state.go('home', {url: '/'});
         })
@@ -58,15 +53,17 @@
           console.log(err);
         });
     };
-  });
 
-  //controls login, registration
-  app.controller('UserCtrl', function($scope, $http, $state, $stateParams, Values){
-
+    $scope.changeStatus = function(){
+      $scope.isLoggedIn = true;
+      $state.go('user-home', {url: '/user-home'});
+    };
   });
 
   app.controller('BeerCtrl', function($scope, $http, $state, $stateParams, Values){
     var untappdURL = 'https://api.untappd.com/v4/search';
+
+    $scope.currentUser = Values.getCurrentUser();
 
     //search beers from the untapped API
     self.searchBeers = function(searchTerm){

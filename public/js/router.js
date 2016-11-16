@@ -15,19 +15,23 @@
     })
     .state('register', {
       url: '/register',
-      templateUrl: "/partials/register.html",
+      templateUrl: "/partials/register.html"
     })
     .state('login', {
       url: '/login',
-      templateUrl: "/partials/login.html",
+      templateUrl: "/partials/login.html"
     })
     .state('search-beers', {
       url: '/search-beers',
       templateUrl: "/partials/search-beers.html",
+      controller: 'BeerCtrl',
+      controllerAs: 'beer'
     })
     .state('user-home', {
       url: '/user-home',
       templateUrl: "/partials/user-home.html",
+      controller: 'BeerCtrl',
+      controllerAs: 'beer'
     });
 
     $urlRouterProvider.otherwise('/');
