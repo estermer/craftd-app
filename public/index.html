@@ -13,6 +13,19 @@
 
   </head>
   <body>
+    <div id="navbar">
+      <nav ng-controller="MenuCtrl as menu">
+        <ul ng-show="!isLoggedIn">
+          <li>Register</li>
+          <li>Login</li>
+        </ul>
+        <ul ng-show="isLoggedIn">
+          <li>Home</li>
+          <li>Search Beers</li>
+          <li ng-click="logoutUser()">Logout</li>
+        </ul>
+      </nav>
+    </div>
     <main ui-view></main>
   </body>
 </html>
