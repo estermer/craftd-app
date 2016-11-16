@@ -9,8 +9,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-var passport = require('passport');
-var passportLocal = require('passport-local');
 var pry = require('pry');
 var pryjs = require('pryjs');
 var methodOverride = require('method-override');
@@ -38,29 +36,6 @@ app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
   extended: true
 }));
 ///***********///
-
-
-///ENV variables///
-// var dotenv = require('dotenv');
-// dotenv.load();
-///************///
-
-
-///PASSPORT CONFIGURATION///
-var LocalStrategy = require('passport-local').Strategy;
-
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-///*****************///
 
 
 ///MIDDLEWARE ROUTING///

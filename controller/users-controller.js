@@ -2,11 +2,32 @@
 //=========================================
 var express = require('express');
 var router = express.Router();
+//=========================================
 
 //EXTERNAL FILES
 //=========================================
 var User = require('../model/user.js');
 var Beer = require('../model/beer.js');
+//=========================================
+
+//PASSPORT
+//=========================================
+var passport = require('passport');
+var passportLocal = require('passport-local');
+var LocalStrategy = passportLocal.Strategy;
+
+router.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//=========================================
 
 
 //REGISTER

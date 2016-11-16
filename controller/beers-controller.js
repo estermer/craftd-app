@@ -38,7 +38,7 @@ router.post('/', function(req, res){
 
 //UPDATE
 //=========================================
-router.put('/:id', function(req, res){]
+router.put('/:id', function(req, res){
   User.findOne({
     username: req.user.username
   }, function(err, user){
