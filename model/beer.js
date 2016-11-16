@@ -6,7 +6,7 @@ var BeerSchema = new Schema({
   name: String,
   img: String,
   comment: String,
-  rating: Integer
+  rating: Number
 });
 
 BeerSchema.plugin(passportLocalMongoose);
