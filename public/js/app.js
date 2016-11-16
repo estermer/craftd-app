@@ -18,7 +18,7 @@
 
   //controls login, registration
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams, Values){
-    var rootURL = 'http://localhost:3000';
+    var rootURL = 'http://localhost:3000/users';
     // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
     $scope.isLoggedIn = false;
     console.log($scope.isLoggedIn);
@@ -26,7 +26,7 @@
     //functions for redirecting Users to their different views
 
     $scope.userLogin = function(user){
-      $http.get(`${rootURL}/users/login`, user)
+      $http.get(`${rootURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
           Values.setCurrentUser(response.data.user)
@@ -38,11 +38,19 @@
     };
 
     $scope.registerUser = function(user){
-
+      $http.post(`${rootURL}`, user)
+        .then(function(response){
+          $scope.isLoggedIn = true;
+          Values.setCurrentUser(response.data.user)
+          $state.go('user-home', {url: '/user-home'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
     };
 
     $scope.logoutUser = function(){
-      $http.delete(`${rootURL}/users/logout`)
+      $http.delete(`${rootURL}`)
         .then(function(response){
           console.log("<<<<<<<<<<<", response.data.message);
           $scope.isLoggedIn = false;

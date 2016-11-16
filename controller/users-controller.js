@@ -32,7 +32,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //REGISTER
 //=========================================
-router.post('/register', function(req, res){
+router.post('/', function(req, res){
   console.log("USER REGISTRATION INFORMATION >>>>>", req.body.username);
   User.register(new User({
     username: req.body.username
@@ -49,14 +49,14 @@ router.post('/register', function(req, res){
 
 //LOGIN
 //=========================================
-router.get('/login', passport.authenticate('local'), function(req, res){
+router.get('/', passport.authenticate('local'), function(req, res){
   console.log("USER LOGGED IN >>>>>>>>>", req.user.username);
   res.json({user: req.user});
 });
 
 //LOGOUT
 //=========================================
-router.delete('/logout', function(req, res){
+router.delete('/', function(req, res){
   req.logout();
   console.log("USER LOGGED OUT >>>>>>>>>>");
   res.json({message: "Logged Out!"});
