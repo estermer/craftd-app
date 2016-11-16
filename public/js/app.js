@@ -31,19 +31,19 @@
 
     //functions for redirecting Users to their different views
     $scope.registerGo = function(){
-
+      $state.go('register', {url: '/register'});
     };
 
     $scope.loginGo = function(){
-
+      $state.go('login', {url: '/login'});
     };
 
     $scope.userHomeGo = function(){
-
+      $state.go('user-home', {url: '/user-home'});
     };
 
     $scope.searchGo = function(){
-
+      $state.go('search', {url: '/search-beers'});
     };
 
     $scope.logoutUser = function(){
