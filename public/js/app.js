@@ -25,7 +25,39 @@
 
   //This controller will controll the dynamic view of the navigation bar
   app.controller('MenuCtrl' function($scope, $http, Values){
+    var rootURL = 'http://localhost:3000';
     // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
+    $scope.isLoggedIn = Values.getUserStatus();
+
+    //functions for redirecting Users to their different views
+    $scope.registerGo = function(){
+
+    };
+
+    $scope.loginGo = function(){
+
+    };
+
+    $scope.userHomeGo = function(){
+
+    };
+
+    $scope.searchGo = function(){
+
+    };
+
+    $scope.logoutUser = function(){
+      $http.delete(`${rootURL}/users/logout`)
+        .then(function(response){
+          console.log("<<<<<<<<<<<", response.data.message);
+          Values.setUserStatus(false);
+          Values.setCurrentUser({});
+          $state.go('home', {url: '/'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    };
   });
 
   //controls login, registration
