@@ -28,6 +28,10 @@
     .state('user-home', {
       url: '/user-home',
       templateUrl: "/partials/user-home.html"
+    })
+    .state('preview-beer', {
+      url: '/preview-beer',
+      templateUrl: "/partials/preview-beer.html"
     });
 
     $urlRouterProvider.otherwise('/');
