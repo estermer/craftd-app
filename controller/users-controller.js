@@ -33,12 +33,13 @@ passport.deserializeUser(User.deserializeUser());
 //REGISTER
 //=========================================
 router.post('/', function(req, res){
-  console.log("USER REGISTRATION INFORMATION >>>>>", req.body.username);
+  console.log("USER REGISTRATION INFORMATION >>>>>", req.body);
   User.register(new User({
     username: req.body.username
   }),
   req.body.password,
   function(err, user){
+    if (err) console.log(err);
     console.log("AFTER REGISTRATION USER >>>>>>>>", user);
     req.login(user, function(err){
       if (err) {console.log(err); }

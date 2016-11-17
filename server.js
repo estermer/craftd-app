@@ -22,7 +22,7 @@ var BeersController = require('./controller/beers-controller.js');
 
 
 ///MONGOOSE///
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/milelogger';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/craftd';
 mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 ///********///

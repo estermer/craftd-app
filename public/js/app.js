@@ -38,6 +38,7 @@
     };
 
     $scope.registerUser = function(user){
+      console.log("USER To REGISTER >>>>>>>>>>", user);
       $http.post(`${rootURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;

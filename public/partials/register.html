@@ -1,1 +1,7 @@
-register page
+<form ng-submit="registerUser(user)">
+  <label for="username">Enter a username</label>
+  <input type="text" name="username" ng-model="user.username"><br>
+  <label for="password">Enter a password</label>
+  <input type="password" name="password" ng-model="user.password"><br>
+  <button type="submit">REGISTER</button>
+</form>

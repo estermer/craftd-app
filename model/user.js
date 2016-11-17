@@ -6,13 +6,9 @@ var BeerSchema = require('./beer.js').schema;
 var UserSchema = new Schema({
   username: {
     type: String,
-    unique: true,
-    required: true
+    unique: true
   },
-  password: {
-    type: String,
-    required: true
-  },
+  password: String,
   beers: [BeerSchema]
 });
 
