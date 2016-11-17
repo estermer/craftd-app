@@ -5,7 +5,7 @@
   </label>
 </form>
 
-<div ng-if="beersSearched" ng-repeat="beer in beersSearched">
+<div ng-if="beersSearched" ng-click="previewBeer(beer)" ng-repeat="beer in beersSearched">
   <img ng-src="{{beer.beer.beer_label}}" alt="beer label" />
   <h3>{{beer.beer.beer_name}}</h3>
   <p>
