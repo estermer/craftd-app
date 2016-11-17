@@ -1,0 +1,13 @@
+<div ng-if="beerToPreview">
+  <img ng-src="{{beerToPreview.beer.beer_label}}" alt="beer label" />
+  <h3>{{beerToPreview.beer.beer_name}}</h3>
+  <p>
+    ABV {{beerToPreview.beer.beer_abv}}
+  </p>
+  <p>
+    {{beerToPreview.beer.beer_style}}
+  </p>
+  <p>
+    {{beerToPreview.beer.beer_description}}
+  </p>
+</div>
