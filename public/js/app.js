@@ -11,7 +11,6 @@
 
     $scope.isLoggedIn = false;
 
-
     $scope.loginUser = function(user){
       $http.post(`${usersURL}/login`, user)
         .then(function(response){
@@ -58,17 +57,30 @@
         });
     };
 
-    
+
+    // search beers from the untapped API
+    $scope.searchBeers = function(searchTerm){
+
+      $http.get(`${beersURL}/env`)
+        .then(function(response){
+          return response.data.env;
+        })
+        .then(function(env){
+          $http.get(`${untappdURL}/beer?q=${searchTerm}&client_id=${env.clientId}&client_secret=${env.clientSecret}`)
+            .then(function(response){
+              console.log(response.data.response.beers.items);
+              $scope.beersSearched = response.data.response.beers.items;
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+        })
+        .catch(function(err){
+          console.log(err);
+        });
 
 
-
-    //search beers from the untapped API
-    // self.searchBeers = function(searchTerm){
-    //   $http.get(`${untappdURL}/beer?q=${searchTerm}&client_id=${clientId}&client_secret=${clientSecret}`, function(req, res){
-    //       /*set variable of beers
-    //           response.response.beers.items <<< items is an array*/
-    //   });
-    // };
+    };
 
   });
   //=========================================================================

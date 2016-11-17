@@ -23,15 +23,11 @@
     })
     .state('search-beers', {
       url: '/search-beers',
-      templateUrl: "/partials/search-beers.html",
-      controller: 'BeerCtrl',
-      controllerAs: 'beer'
+      templateUrl: "/partials/search-beers.html"
     })
     .state('user-home', {
       url: '/user-home',
-      templateUrl: "/partials/user-home.html",
-      controller: 'BeerCtrl',
-      controllerAs: 'beer'
+      templateUrl: "/partials/user-home.html"
     });
 
     $urlRouterProvider.otherwise('/');

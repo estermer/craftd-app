@@ -1,1 +1,20 @@
-search beers page
+<form ng-submit="searchBeers(beer)">
+  <label> Search for beers
+    <input type="text" ng-model="beer">
+    <input type="submit" value="SEARCH">
+  </label>
+</form>
+
+<div ng-if="beersSearched" ng-repeat="beer in beersSearched">
+  <img ng-src="{{beer.beer.beer_label}}" alt="beer label" />
+  <h3>{{beer.beer.beer_name}}</h3>
+  <p>
+    ABV {{beer.beer.berr_abv}}
+  </p>
+  <p>
+    {{beer.beer.beer_style}}
+  </p>
+  <p>
+    {{beer.beer.beer_description}}
+  </p>
+</div>
