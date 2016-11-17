@@ -26,6 +26,9 @@ router.get('/env', function(req, res){
 router.post('/', function(req, res){
   beer = Beer.create({
     name: req.body.name,
+    description: req.body.description,
+    abv: req.body.abv,
+    style: req.body.style,
     img: req.body.img,
     comment: req.body.comment,
     rating: req.body.rating

@@ -84,6 +84,27 @@
       $scope.beerToPreview = beer;
     };
 
+    $scope.beerCheckIn = function(input){
+      $http.post(`${beersURL}`, {
+          name: $scope.beerToPreview.beer.beer_name,
+          description: $scope.beerToPreview.beer.beer_description,
+          abv: $scope.beerToPreview.beer.beer_abv,
+          style: $scope.beerToPreview.beer.beer_style,
+          img: $scope.beerToPreview.beer.beer_label,
+          comment: input.comment,
+          rating: input.rating
+        })
+        .then(function(response){
+          console.log('BEER CREATED >>>>>>>>>>>>');
+          console.log('ADDED TO USER >>>>>>>>>>>>', response.data.user);
+          $scope.currentUser = response.data.user;
+          $state.go('user-home', {url: '/user-home'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    };
+
   });
   //=========================================================================
 
