@@ -1,1 +1,19 @@
-user home page
+<div ng-if="currentUser" ng-repeat="beer in currentUser.beers">
+  <img ng-src="{{beer.img}}" alt="beer label" />
+  <h3>{{beer.name}}</h3>
+  <p>
+    ABV {{beer.abv}}
+  </p>
+  <p>
+    {{beer.style}}
+  </p>
+  <p>
+    {{beer.description}}
+  </p>
+  <p>
+    {{beer.comment}}
+  </p>
+  <p>
+    {{beer.rating}}
+  </p>
+</div>

@@ -24,19 +24,25 @@ router.get('/env', function(req, res){
 //CREATE
 //=========================================
 router.post('/', function(req, res){
-  beer = Beer.create({
-    name: req.body.name,
-    description: req.body.description,
-    abv: req.body.abv,
-    style: req.body.style,
-    img: req.body.img,
-    comment: req.body.comment,
-    rating: req.body.rating
+  User.findOne({
+    username: req.user.username
+  }, function(err, user){
+    user.beers.push({
+        name: req.body.name,
+        description: req.body.description,
+        abv: req.body.abv,
+        style: req.body.style,
+        img: req.body.img,
+        comment: req.body.comment,
+        rating: req.body.rating
+      });
+
+    user.save(function(err){
+      if(err) console.log(err);
+      console.log("Edited Item Saved to User!!!");
+    });
+    res.json({status: 200, user: req.user});
   });
-
-  req.user.beers.push(beer);
-
-  res.json({status: 200, user: req.user});
 });
 
 //UPDATE
