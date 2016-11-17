@@ -81,7 +81,7 @@
 
     $scope.previewBeer = function(beer){
       $state.go('preview-beer', {url: '/preview-beer'});
-      $scope.beerToPreview = beer.beer;
+      $scope.beerToPreview = beer;
     };
 
   });
