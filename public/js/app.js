@@ -1,17 +1,19 @@
 (function(){
   var app = angular.module('craftd', ['ui.router']);
 
-  //controls login, registration
+  //USER CONTROLLER
+  //=========================================================================
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
-    var rootURL = 'http://localhost:3000/users';
-    // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
-    $scope.isLoggedIn = false;
-    console.log($scope.isLoggedIn);
+    var usersURL = 'http://localhost:3000/users';
+    var beersURL = 'http://localhost:3000/beers';
+    var untappdURL = 'https://api.untappd.com/v4/search';
 
-    //functions for redirecting Users to their different views
+
+    $scope.isLoggedIn = false;
+
 
     $scope.loginUser = function(user){
-      $http.post(`${rootURL}/login`, user)
+      $http.post(`${usersURL}/login`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
           console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
@@ -28,7 +30,7 @@
 
     $scope.registerUser = function(user){
       console.log("USER To REGISTER >>>>>>>>>>", user);
-      $http.post(`${rootURL}`, user)
+      $http.post(`${usersURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
           console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
@@ -44,7 +46,7 @@
     };
 
     $scope.logoutUser = function(){
-      $http.delete(`${rootURL}`)
+      $http.delete(`${usersURL}`)
         .then(function(response){
           console.log("<<<<<<<<<<< LOGGING OUT", response.data.user);
           $scope.isLoggedIn = false;
@@ -56,25 +58,21 @@
         });
     };
 
-    $scope.changeStatus = function(){
-      $scope.isLoggedIn = true;
-      $state.go('user-home', {url: '/user-home'});
-    };
-  });
+    
 
-  app.controller('BeerCtrl', function($scope, $http, $state, $stateParams){
-    var untappdURL = 'https://api.untappd.com/v4/search';
 
 
     //search beers from the untapped API
-    self.searchBeers = function(searchTerm){
-      $http.get(`${untappdURL}/beer?q=${searchTerm}&client_id=${clientId}&client_secret=${clientSecret}`, function(req, res){
-          /*set variable of beers
-              response.response.beers.items <<< items is an array*/
-      });
-    };
+    // self.searchBeers = function(searchTerm){
+    //   $http.get(`${untappdURL}/beer?q=${searchTerm}&client_id=${clientId}&client_secret=${clientSecret}`, function(req, res){
+    //       /*set variable of beers
+    //           response.response.beers.items <<< items is an array*/
+    //   });
+    // };
 
   });
+  //=========================================================================
+
 })();
 
 //example untapped search for beers
