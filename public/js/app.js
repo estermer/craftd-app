@@ -1,21 +1,6 @@
 (function(){
   var app = angular.module('craftd', ['ui.router']);
 
-  // app.factory('Values', function(){
-  //   var data = {
-  //     currentUser: {}
-  //   };
-  //
-  //   return {
-  //     setCurrentUser: function(user){
-  //       data.currentUser = user;
-  //     },
-  //     getCurrentUser: function(){
-  //       return data.currentUser;
-  //     }
-  //   };
-  // });
-
   //controls login, registration
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
     var rootURL = 'http://localhost:3000/users';
@@ -25,7 +10,7 @@
 
     //functions for redirecting Users to their different views
 
-    $scope.userLogin = function(user){
+    $scope.loginUser = function(user){
       $http.get(`${rootURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;

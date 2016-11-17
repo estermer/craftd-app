@@ -1,2 +1,7 @@
-login page
-<button ng-click="changeStatus()">Login</button>
+<form ng-submit="loginUser(user)">
+  <label for="username">Enter your username</label>
+  <input type="text" name="username" ng-model="user.username"><br>
+  <label for="password">Enter your password</label>
+  <input type="password" name="password" ng-model="user.password"><br>
+  <button type="submit">LOGIN</button>
+</form>
