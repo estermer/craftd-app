@@ -11,7 +11,7 @@
     //functions for redirecting Users to their different views
 
     $scope.loginUser = function(user){
-      $http.get(`${rootURL}`, user)
+      $http.post(`${rootURL}/login`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
           console.log("USER LOGGED IN >>>>>>>>>", response.data.user);

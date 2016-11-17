@@ -50,7 +50,7 @@ router.post('/', function(req, res){
 
 //LOGIN
 //=========================================
-router.get('/', passport.authenticate('local'), function(req, res){
+router.post('/login', passport.authenticate('local'), function(req, res){
   console.log("USER LOGGED IN >>>>>>>>>", req.user.username);
   res.json({user: req.user});
 });
