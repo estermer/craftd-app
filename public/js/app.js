@@ -1,23 +1,23 @@
 (function(){
   var app = angular.module('craftd', ['ui.router']);
 
-  app.factory('Values', function(){
-    var data = {
-      currentUser: {}
-    };
-
-    return {
-      setCurrentUser: function(user){
-        data.currentUser = user;
-      },
-      getCurrentUser: function(){
-        return data.currentUser;
-      }
-    };
-  });
+  // app.factory('Values', function(){
+  //   var data = {
+  //     currentUser: {}
+  //   };
+  //
+  //   return {
+  //     setCurrentUser: function(user){
+  //       data.currentUser = user;
+  //     },
+  //     getCurrentUser: function(){
+  //       return data.currentUser;
+  //     }
+  //   };
+  // });
 
   //controls login, registration
-  app.controller('UserCtrl', function($scope, $http, $state, $stateParams, Values){
+  app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
     var rootURL = 'http://localhost:3000/users';
     // login, register,<<<< non user / logged in user >>>>>>> home, search beers, logout
     $scope.isLoggedIn = false;
@@ -29,7 +29,11 @@
       $http.get(`${rootURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
-          Values.setCurrentUser(response.data.user)
+          console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
+          $scope.currentUser = response.data.user;
+          return response.data.user;
+        })
+        .then(function(user){
           $state.go('user-home', {url: '/user-home'});
         })
         .catch(function(err){
@@ -42,7 +46,11 @@
       $http.post(`${rootURL}`, user)
         .then(function(response){
           $scope.isLoggedIn = true;
-          Values.setCurrentUser(response.data.user)
+          console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
+          $scope.currentUser = response.data.user;
+          return response.data.user;
+        })
+        .then(function(user){
           $state.go('user-home', {url: '/user-home'});
         })
         .catch(function(err){
@@ -53,9 +61,9 @@
     $scope.logoutUser = function(){
       $http.delete(`${rootURL}`)
         .then(function(response){
-          console.log("<<<<<<<<<<<", response.data.message);
+          console.log("<<<<<<<<<<< LOGGING OUT", response.data.user);
           $scope.isLoggedIn = false;
-          Values.setCurrentUser({});
+          $scope.currentUser = response.data.user;
           $state.go('home', {url: '/'});
         })
         .catch(function(err){
@@ -69,10 +77,9 @@
     };
   });
 
-  app.controller('BeerCtrl', function($scope, $http, $state, $stateParams, Values){
+  app.controller('BeerCtrl', function($scope, $http, $state, $stateParams){
     var untappdURL = 'https://api.untappd.com/v4/search';
 
-    $scope.currentUser = Values.getCurrentUser();
 
     //search beers from the untapped API
     self.searchBeers = function(searchTerm){

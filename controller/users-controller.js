@@ -43,7 +43,7 @@ router.post('/', function(req, res){
     console.log("AFTER REGISTRATION USER >>>>>>>>", user);
     req.login(user, function(err){
       if (err) {console.log(err); }
-      return res.json(user);
+      return res.json({user: user});
     });
   });
 });
@@ -60,7 +60,7 @@ router.get('/', passport.authenticate('local'), function(req, res){
 router.delete('/', function(req, res){
   req.logout();
   console.log("USER LOGGED OUT >>>>>>>>>>");
-  res.json({message: "Logged Out!"});
+  res.json({message: "Logged Out!", user: req.user});
 });
 
 
