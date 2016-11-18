@@ -113,6 +113,18 @@
         });
     };
 
+    $scope.deleteCheckinBeer = function(id){
+      $http.delete(`${beersURL}/${id}`)
+        .then(function(response){
+          console.log("BEER REMOVED FROM CHECKING >>>>>>>>>>");
+          $scope.currentUser = response.data.user;
+          $state.go('user-home', {url: '/user-home'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    };
+
     $scope.clearSearchResults = function(){
       $scope.beersSearched = null;
     };
