@@ -1,7 +1,11 @@
-<div ng-if="currentUser" ng-click="showBeer(beer)" ng-repeat="beer in currentUser.beers">
+<label>
+  <input type="text" ng-model="searchText">
+</label>
+
+<div ng-if="currentUser" ng-click="showBeer(beer)" ng-repeat="beer in currentUser.beers | filter:searchText">
   <img ng-src="{{beer.img}}" alt="beer label" />
   <h3>{{beer.name}}</h3>
-  <p>
+  <p ng-if="beer.rating">
     {{beer.rating}}/10
   </p>
 </div>
