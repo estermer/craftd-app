@@ -32,6 +32,10 @@
     .state('preview-beer', {
       url: '/preview-beer',
       templateUrl: "/partials/preview-beer.html"
+    })
+    .state('show-beer', {
+      url: '/show-beer',
+      templateUrl: "/partials/show-beer.html"
     });
 
     $urlRouterProvider.otherwise('/');

@@ -84,6 +84,11 @@
       $scope.beerToPreview = beer;
     };
 
+    $scope.showBeer = function(beer){
+      $state.go('show-beer', {url: '/show-beer'});
+      $scope.beerToPreview = beer;
+    };
+
     $scope.beerCheckIn = function(input){
       $http.post(`${beersURL}`, {
           name: $scope.beerToPreview.beer.beer_name,
@@ -91,7 +96,7 @@
           abv: $scope.beerToPreview.beer.beer_abv,
           style: $scope.beerToPreview.beer.beer_style,
           img: $scope.beerToPreview.beer.beer_label,
-          comment: input.comment || "",
+          comment: input.comment,
           rating: input.rating
         })
         .then(function(response){

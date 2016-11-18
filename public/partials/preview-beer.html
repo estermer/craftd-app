@@ -17,11 +17,11 @@
 <form ng-submit="beerCheckIn(input)">
   <label>
     Add A Comment:
-    <textarea ng-model="input.comment" rows="8" cols="40"></textarea>
+    <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
   </label>
   <label>
     Rate this beer:
-    <input ng-model="input.rating" type="range"  min="0" max="5" />
+    <input ng-model="input.rating" type="range"  min="0" max="10" />
   </label>
   <input type="submit" ng-click="clearSearchResults()" value="CHECK IN">
 </form>
