@@ -1,4 +1,4 @@
-<button ng-sref="search-beers"><- BACK</button>
+<button ui-sref="search-beers">BACK</button>
 
 <div ng-if="beerToPreview">
   <img ng-src="{{beerToPreview.beer.beer_label}}" alt="beer label" />
@@ -23,5 +23,5 @@
     Rate this beer:
     <input ng-model="input.rating" type="range"  min="0" max="5" />
   </label>
-  <input type="submit" value="CHECK IN">
+  <input type="submit" ng-click="clearSearchResults()" value="CHECK IN">
 </form>

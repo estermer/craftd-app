@@ -22,8 +22,8 @@
           <li ui-sref="login">Login</li>
         </ul>
         <ul ng-show="isLoggedIn">
-          <li ui-sref="user-home">Home</li>
-          <li ui-sref="search-beers">Search Beers</li>
+          <li ui-sref="user-home" ng-click="clearSearchResults()">Home</li>
+          <li ui-sref="search-beers" ng-click="clearSearchResults()">Search Beers</li>
           <li ng-click="logoutUser()">Logout</li>
         </ul>
       </nav>

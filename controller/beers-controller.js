@@ -6,6 +6,7 @@ var router = express.Router();
 
 //EXTERNAL FILES
 //=========================================
+var User = require('../model/user.js');
 var Beer = require('../model/beer.js').model;
 var dotenv = require('dotenv');
 dotenv.load();
@@ -24,9 +25,11 @@ router.get('/env', function(req, res){
 //CREATE
 //=========================================
 router.post('/', function(req, res){
+  console.log("USER>>>>>>>>>>>", req.user);
   User.findOne({
     username: req.user.username
   }, function(err, user){
+    console.log("BEER TO ADD >>>>>>>", req.body);
     user.beers.push({
         name: req.body.name,
         description: req.body.description,
@@ -41,7 +44,7 @@ router.post('/', function(req, res){
       if(err) console.log(err);
       console.log("Edited Item Saved to User!!!");
     });
-    res.json({status: 200, user: req.user});
+    res.json({status: 200, user: user});
   });
 });
 

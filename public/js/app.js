@@ -4,7 +4,7 @@
   //USER CONTROLLER
   //=========================================================================
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
-    var usersURL = 'http://localhost:3000/users';
+    var usersURL = 'http://localhost:3000';
     var beersURL = 'http://localhost:3000/beers';
     var untappdURL = 'https://api.untappd.com/v4/search';
 
@@ -91,18 +91,25 @@
           abv: $scope.beerToPreview.beer.beer_abv,
           style: $scope.beerToPreview.beer.beer_style,
           img: $scope.beerToPreview.beer.beer_label,
-          comment: input.comment,
+          comment: input.comment || "",
           rating: input.rating
         })
         .then(function(response){
-          console.log('BEER CREATED >>>>>>>>>>>>');
+          console.log('BEER CREATED AND ADDED >>>>>>>>>>>>', response.data.user.beers);
           console.log('ADDED TO USER >>>>>>>>>>>>', response.data.user);
           $scope.currentUser = response.data.user;
+          return response.data.user
+        })
+        .then(function(user){
           $state.go('user-home', {url: '/user-home'});
         })
         .catch(function(err){
           console.log(err);
         });
+    };
+
+    $scope.clearSearchResults = function(){
+      $scope.beersSearched = null;
     };
 
   });
