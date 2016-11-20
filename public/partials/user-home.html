@@ -1,4 +1,7 @@
-<label>
+<h1>Welcome {{currentUser.username}}!</h1>
+
+<label ng-if="currentUser.beers.length > 0">
+  Search Checkins
   <input type="text" ng-model="searchText">
 </label>
 

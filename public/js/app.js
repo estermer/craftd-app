@@ -10,6 +10,7 @@
 
 
     $scope.isLoggedIn = false;
+    $scope.isEditing = false;
 
     $scope.loginUser = function(user){
       $http.post(`${usersURL}/login`, user)
@@ -113,6 +114,29 @@
         });
     };
 
+    $scope.editBeerCheckin = function(input){
+      $http.put(`${beersURL}/${$scope.beerToPreview._id}`, {
+          name: $scope.beerToPreview.name,
+          description: $scope.beerToPreview.description,
+          abv: $scope.beerToPreview.abv,
+          style: $scope.beerToPreview.style,
+          img: $scope.beerToPreview.label,
+          comment: input.comment,
+          rating: input.rating
+        })
+        .then(function(response){
+          console.log('BEER EDITED >>>>>>>>>>>>', response.data.user.beers);
+          $scope.currentUser = response.data.user;
+          return response.data.user;
+        })
+        .then(function(user){
+          $state.go('user-home', {url: '/user-home'});
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    };
+
     $scope.deleteCheckinBeer = function(id){
       $http.delete(`${beersURL}/${id}`)
         .then(function(response){
@@ -123,6 +147,10 @@
         .catch(function(err){
           console.log(err);
         });
+    };
+
+    $scope.changeIsEditing = function(){
+      $scope.isEditing = true;
     };
 
     $scope.clearSearchResults = function(){

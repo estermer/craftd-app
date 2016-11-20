@@ -1,5 +1,6 @@
 <button ui-sref="user-home">BACK</button>
 <button ng-click="deleteCheckinBeer(beerToPreview._id)">DELETE</button>
+<button ng-click="changeIsEditing()">EDIT</button>
 
 <div>
   <img ng-src="{{beerToPreview.img}}" alt="beer label" />
@@ -13,10 +14,23 @@
   <p>
     {{beerToPreview.description}}
   </p>
-  <p>
+  <p ng-if="!isEditing">
     {{beerToPreview.comment}}
   </p>
-  <p>
+  <p ng-if="!isEditing">
     {{beerToPreview.rating}}
   </p>
+  <form ng-if="isEditing" ng-submit="editBeerCheckin(input)">
+    <label>
+      Edit Comment:
+      <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
+    </label>
+    <label>
+      Edit Rating:
+      <input ng-model="input.rating" type="range"  min="0" max="10" />
+    </label>
+    <input type="submit" value="CHECK IN">
+  </form>
 </div>
+
+<

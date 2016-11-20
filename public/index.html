@@ -8,27 +8,31 @@
     <link rel="stylesheet" href="css/main.css" media="screen" title="no title">
 
     <!-- ANGULAR/JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/router.js" charset="utf-8"></script>
 
   </head>
   <body ng-controller="UserCtrl as user">
-    <div id="navbar">
+    <div ng-show="isLoggedIn" id="navbar">
+      <div id="header-logo">
+        <h1>CRAFT'D</h1>
+        <!-- <img src="" alt="logo" /> -->
+      </div>
       <nav>
-        <ul ng-show="!isLoggedIn">
-          <li ui-sref="register">Register</li>
-          <li ui-sref="login">Login</li>
-        </ul>
-        <ul ng-show="isLoggedIn">
-          <li ui-sref="user-home" ng-click="clearSearchResults()">Home</li>
-          <li ui-sref="search-beers" ng-click="clearSearchResults()">Search Beers</li>
-          <li ng-click="logoutUser()">Logout</li>
-          <li>CHECKINs: {{currentUser.beers.length}}</li>
-        </ul>
+        <!-- <span ng-show="!isLoggedIn" ui-sref="register">Register</span>
+        <span ng-show="!isLoggedIn" ui-sref="login">Login</span> -->
+        <span ng-show="isLoggedIn" ui-sref="user-home" ng-click="clearSearchResults()">Home</span>
+        <span ng-show="isLoggedIn" ui-sref="search-beers" ng-click="clearSearchResults()">Search Beers</span>
+        <span ng-show="isLoggedIn" ng-click="logoutUser()">Logout</span>
+        <h4 ng-show="isLoggedIn">CHECKINs: {{currentUser.beers.length}}</h4>
       </nav>
     </div>
-    <main ui-view></main>
+
+    <div id="faded-bg">
+      <main ui-view></main>
+    </div>
+
   </body>
 </html>

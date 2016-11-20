@@ -65,7 +65,7 @@ router.put('/:id', function(req, res){
       console.log("Edited Item Saved to User!!!");
     });
 
-    res.json({status: 200, user: req.user});
+    res.json({status: 200, user: user});
   });
 });
 
