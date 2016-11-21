@@ -101,9 +101,9 @@ app.delete('/', function(req, res){
   res.json({message: "Logged Out!", user: req.user});
 });
 
-app.all('/*', function(req, res, next) {
-  res.sendFile('/public/index.html', { root: __dirname });
-});
+// app.all('/*', function(req, res, next) {
+//   res.sendFile('/public/index.html', { root: __dirname });
+// });
 
 app.listen(process.env.PORT || 3000, function(){
   console.log('=============================');
