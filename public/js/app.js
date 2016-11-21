@@ -4,8 +4,6 @@
   //USER CONTROLLER
   //=========================================================================
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
-    var usersURL = ''; //http://localhost:3000
-    var beersURL = ''; //http://localhost:3000/beers
     var untappdURL = 'https://api.untappd.com/v4/search';
 
 
@@ -13,7 +11,7 @@
     $scope.isEditing = false;
 
     $scope.loginUser = function(user){
-      $http.post(`${usersURL}/login`, user)
+      $http.post('/login', user)
         .then(function(response){
           $scope.isLoggedIn = true;
           console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
@@ -30,7 +28,7 @@
 
     $scope.registerUser = function(user){
       console.log("USER To REGISTER >>>>>>>>>>", user);
-      $http.post(`${usersURL}`, user)
+      $http.post('/', user)
         .then(function(response){
           $scope.isLoggedIn = true;
           console.log("USER LOGGED IN >>>>>>>>>", response.data.user);
@@ -48,7 +46,7 @@
     };
 
     $scope.logoutUser = function(){
-      $http.delete(`${usersURL}`)
+      $http.delete('/')
         .then(function(response){
           console.log("<<<<<<<<<<< LOGGING OUT", response.data.user);
           $scope.isLoggedIn = false;
@@ -63,7 +61,7 @@
 
     // search beers from the untapped API
     $scope.searchBeers = function(searchTerm){
-      $http.get(`${beersURL}/env`)
+      $http.get('/env')
         .then(function(response){
           return response.data.env;
         })
@@ -93,7 +91,7 @@
     };
 
     $scope.beerCheckIn = function(input){
-      $http.post(`${beersURL}`, {
+      $http.post('/beers', {
           name: $scope.beerToPreview.beer.beer_name,
           description: $scope.beerToPreview.beer.beer_description,
           abv: $scope.beerToPreview.beer.beer_abv,
@@ -117,7 +115,7 @@
     };
 
     $scope.editBeerCheckin = function(input){
-      $http.put(`${beersURL}/${$scope.beerToPreview._id}`, {
+      $http.put(`/beers/${$scope.beerToPreview._id}`, {
           name: $scope.beerToPreview.name,
           description: $scope.beerToPreview.description,
           abv: $scope.beerToPreview.abv,
@@ -140,7 +138,7 @@
     };
 
     $scope.deleteCheckinBeer = function(id){
-      $http.delete(`${beersURL}/${id}`)
+      $http.delete(`/beers/${id}`)
         .then(function(response){
           console.log("BEER REMOVED FROM CHECKING >>>>>>>>>>");
           $scope.currentUser = response.data.user;
