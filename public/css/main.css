@@ -190,6 +190,8 @@ label {
 
 #user-home, #search-beers {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
