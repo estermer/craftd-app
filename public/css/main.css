@@ -109,10 +109,21 @@ main {
   align-items: center;
 }
 
+#header-logo > img {
+  height: 60px;
+  margin-right: 10px;
+}
+
+#header-logo > h1 {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  height: 60px;
+}
+
+
 #logo {
-  height: 200px;
-  width: 150px;
-  background-color: white;
+  height: 300px;
   margin-top: 100px;
 }
 
@@ -194,6 +205,10 @@ label {
   font-weight: bold;
   color: black;
   margin-right: 30px;
+}
+
+#user-home > h1 {
+  clear: right;
 }
 
 #no-beers {
