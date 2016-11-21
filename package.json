@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/estermer/craftd-app#readme",
   "dependencies": {
-    "angular-ui-router": "^0.3.2",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
