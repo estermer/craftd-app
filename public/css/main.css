@@ -182,7 +182,7 @@ label {
   text-shadow: 6px 3px 10px black;
 }
 
-#user-home {
+#user-home, #search-beers {
   text-align: center;
   overflow: hidden;
 }
