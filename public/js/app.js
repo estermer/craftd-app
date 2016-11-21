@@ -4,8 +4,8 @@
   //USER CONTROLLER
   //=========================================================================
   app.controller('UserCtrl', function($scope, $http, $state, $stateParams){
-    var usersURL = 'http://localhost:3000';
-    var beersURL = 'http://localhost:3000/beers';
+    var usersURL = 'http://craftd-app.heroku.com'; //http://localhost:3000
+    var beersURL = 'http://craftd-app.heroku.com/beers'; //http://localhost:3000/beers
     var untappdURL = 'https://api.untappd.com/v4/search';
 
 
