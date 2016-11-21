@@ -1,36 +1,33 @@
-<button ui-sref="user-home">BACK</button>
-<button ng-click="deleteCheckinBeer(beerToPreview._id)">DELETE</button>
-<button ng-click="changeIsEditing()">EDIT</button>
+<div id="beer-show">
+  <button class="show-nav" ui-sref="user-home"> << BACK</button>
+  <button class="show-nav" ng-click="deleteCheckinBeer(beerToPreview._id)">DELETE</button>
+  <button class="show-nav" ng-click="changeIsEditing()">EDIT >></button>
 
-<div>
-  <img ng-src="{{beerToPreview.img}}" alt="beer label" />
-  <h3>{{beerToPreview.name}}</h3>
-  <p>
-    ABV {{beerToPreview.abv}}
-  </p>
-  <p>
-    {{beerToPreview.style}}
-  </p>
-  <p>
-    {{beerToPreview.description}}
-  </p>
-  <p ng-if="!isEditing">
-    {{beerToPreview.comment}}
-  </p>
-  <p ng-if="!isEditing">
-    {{beerToPreview.rating}}
-  </p>
-  <form ng-if="isEditing" ng-submit="editBeerCheckin(input)">
-    <label>
-      Edit Comment:
-      <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
-    </label>
-    <label>
-      Edit Rating:
-      <input ng-model="input.rating" type="range"  min="0" max="10" />
-    </label>
-    <input type="submit" value="CHECK IN">
-  </form>
+  <div>
+    <img ng-src="{{beerToPreview.img}}" alt="beer label" />
+    <h3>{{beerToPreview.name}} / ABV {{beerToPreview.abv}} / {{beerToPreview.style}}</h3>
+    <hr>
+    <p ng-if="!isEditing">
+      Rating:<br>
+      {{beerToPreview.rating}}/10
+    </p>
+    <p ng-if="!isEditing">
+      Comment:<br>
+      {{beerToPreview.comment}}
+    </p>
+    <p>
+      {{beerToPreview.description}}
+    </p>
+    <form ng-if="isEditing" ng-submit="editBeerCheckin(input)">
+      <label>
+        Edit Comment:<br>
+        <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
+      </label><br>
+      <label>
+        Edit Rating:<br>
+        0<input ng-model="input.rating" type="range"  min="0" max="10" />10
+      </label><br>
+      <input type="submit" value="CHECK IN">
+    </form>
+  </div>
 </div>
-
-<

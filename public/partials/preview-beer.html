@@ -1,27 +1,24 @@
-<button ui-sref="search-beers">BACK</button>
+<div id="beer-show">
+  <button id="back" ui-sref="search-beers"> << BACK</button>
 
-<div ng-if="beerToPreview">
-  <img ng-src="{{beerToPreview.beer.beer_label}}" alt="beer label" />
-  <h3>{{beerToPreview.beer.beer_name}}</h3>
-  <p>
-    ABV {{beerToPreview.beer.beer_abv}}
-  </p>
-  <p>
-    {{beerToPreview.beer.beer_style}}
-  </p>
-  <p>
-    {{beerToPreview.beer.beer_description}}
-  </p>
+  <div ng-if="beerToPreview">
+    <img ng-src="{{beerToPreview.beer.beer_label}}" alt="beer label" />
+    <h3>{{beerToPreview.beer.beer_name}} / ABV {{beerToPreview.beer.beer_abv}} / {{beerToPreview.beer.beer_style}}</h3>
+    <hr>
+    <p>
+      {{beerToPreview.beer.beer_description}}
+    </p>
+  </div>
+  <br>
+  <form ng-submit="beerCheckIn(input)">
+    <label>
+      Add A Comment:<br>
+      <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
+    </label><br><br>
+    <label>
+      Rate this beer:<br>
+      0<input ng-model="input.rating" type="range"  min="0" max="10" />10
+    </label><br><br>
+    <input type="submit" ng-click="clearSearchResults()" value="CHECK IN">
+  </form>
 </div>
-
-<form ng-submit="beerCheckIn(input)">
-  <label>
-    Add A Comment:
-    <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
-  </label>
-  <label>
-    Rate this beer:
-    <input ng-model="input.rating" type="range"  min="0" max="10" />
-  </label>
-  <input type="submit" ng-click="clearSearchResults()" value="CHECK IN">
-</form>
