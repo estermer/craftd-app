@@ -61,7 +61,7 @@
 
     // search beers from the untapped API
     $scope.searchBeers = function(searchTerm){
-      $http.get('/env')
+      $http.get('/beers/env')
         .then(function(response){
           return response.data.env;
         })
