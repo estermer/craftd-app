@@ -2,9 +2,9 @@
   angular.module('craftd')
     .config(MainRouter);
 
-  MainRouter.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+  MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function MainRouter($stateProvider, $urlRouterProvider, $locationProvider){
+  function MainRouter($stateProvider, $urlRouterProvider){
 
     $urlRouterProvider.otherwise("/");
 
@@ -39,7 +39,7 @@
     });
 
     $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
   }; //end of routes
 
