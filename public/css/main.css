@@ -190,8 +190,6 @@ label {
 
 #user-home, #search-beers {
   text-align: center;
-  width: 80%;
-  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -220,7 +218,7 @@ label {
   position: relative;
   float: left;
   background-color: #D7AD3F;
-  width: 200px;
+  width: 180px;
   height: 200px;
   display: inline-block;
   border: 2px solid black;
