@@ -25,29 +25,37 @@ body {
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  background-color: #1A1A1A;
+  background-color: #D7AD3F;
+  color: white;
   width: 100%;
   left: 0;
   top: 0;
   padding: 8px 15px;
+  box-shadow: 0px 0px 20px 4px black;
 }
 
 #header-logo > h1 {
   height: 60px;
+  font-size: 50px;
   font-weight: 900;
+  text-shadow: 6px 3px 10px black;
 }
 
 nav > span {
-  padding-right: 10px;
-  color: white;
+  padding: 10px;
+  margin: 10px;
   text-decoration: none;
   font-weight: 600;
+  font-size: 30px;
+  border: 1px solid white;
+  border-radius: 12px;
 }
 
 nav > span:hover,
 nav > span:active {
   cursor: pointer;
-  color: #D7AD3F;
+  border-style: none;
+  color: #black;
 }
 
 /*****************MAIN BODY***************/
@@ -166,6 +174,59 @@ label {
   padding-bottom: 20px;
 }
 
+/************USER HOME*******************/
+
+#user-home > h1 {
+  text-align: center;
+  font-size: 70px;
+  text-shadow: 6px 3px 10px black;
+}
+
+#user-home {
+  text-align: center;
+  overflow: hidden;
+}
+
+#checkins {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-right: 30px;
+}
+
+#no-beers {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  color: gray;
+  border: 2px solid gray;
+  border-radius: 12px;
+}
+
+/*.beer-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}*/
+
+.beer {
+  position: relative;
+  float: left;
+  background-color: #D7AD3F;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 1px rgba(1,1,1,.7);
+}
+
+.beer > h3 {
+  background-color: black;
+}
 
 
 
