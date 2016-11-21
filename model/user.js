@@ -4,10 +4,7 @@ var Schema = mongoose.Schema;
 var BeerSchema = require('./beer.js').schema;
 
 var UserSchema = new Schema({
-  username: {
-    type: String,
-    unique: true
-  },
+  username: String,
   password: String,
   beers: [BeerSchema]
 });
