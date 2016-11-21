@@ -38,7 +38,9 @@
           return response.data.user;
         })
         .then(function(user){
-          $state.go('user-home', {url: '/user-home'});
+          if (user) {
+            $state.go('user-home', {url: '/user-home'});
+          }
         })
         .catch(function(err){
           console.log(err);
