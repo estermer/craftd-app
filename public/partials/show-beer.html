@@ -18,14 +18,14 @@
     <p>
       {{beerToPreview.description}}
     </p>
-    <form ng-if="isEditing" ng-submit="editBeerCheckin(input)">
+    <form ng-if="isEditing" ng-submit="editBeerCheckin(beerToPreview)">
       <label>
         Edit Comment:<br>
-        <textarea ng-model="input.comment" rows="8" cols="40" required></textarea>
+        <textarea ng-model="beerToPreview.comment" rows="8" cols="40" required></textarea>
       </label><br>
       <label>
         Edit Rating:<br>
-        0<input ng-model="input.rating" type="range"  min="0" max="10" />10
+        0<input ng-model="beerToPreview.rating" type="range"  min="0" max="10" />10
       </label><br>
       <input type="submit" value="CHECK IN">
     </form>
